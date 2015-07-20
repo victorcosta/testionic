@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 
-.run(function($ionicPlatform ,$rootScope ,$cordovaNetwork ) {
+.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -18,15 +18,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         if (window.StatusBar) {
           // org.apache.cordova.statusbar required
           StatusBar.styleDefault();
-        }
-
-        if (window.Connection) {
-            $rootScope.$on('$cordovaNetwork:online', function(event, networkState) {
-                alert('online good sir');
-            })
-            $rootScope.$on('$cordovaNetwork:offline', function(event, networkState) {
-                alert('offline good sir');
-            })
         }
 
     });
