@@ -1,0 +1,25 @@
+<ion-view view-title="Lojas">
+  	<ion-content>
+    	<ion-list>
+      		<ion-item ng-repeat="store in stores" href="#/app/stores/{{store.Store.id}}">
+       		 {{store.Store.name}}
+      		</ion-item>
+    	</ion-list>
+    	<div class="row" ng-show="loading == true">
+		  	<div class="col col-33 col-offset-33">
+		  		<div class="col col-33 col-offset-33">
+		  			<div class="col col-33 col-offset-33">
+		  				<img src="img/loading.GIF" alt="">
+		  			</div>
+		  		</div>
+		  	</div>
+		</div>
+		
+		<ion-list ng-show="!stores.length && !loading">
+      		<ion-item>
+       		 Não existem lojas cadastradas
+      		</ion-item>
+    	</ion-list>
+
+  	</ion-content>
+</ion-view>

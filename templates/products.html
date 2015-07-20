@@ -1,0 +1,51 @@
+<ion-view view-title="Loja">
+  	<ion-content>
+   		<div class="list card">
+			
+			<div class="item" ng-repeat="produto in product">
+			  	<div class="item">
+			    	<h2>{{produto.Product.name}}</h2>
+			  	</div>
+			  	<div class="item item-image">
+			  		<ion-slide-box on-slide-changed="slideHasChanged($index)">
+				  		<ion-slide ng-repeat="photo in produto.Photo">
+				    		<div class="box">
+				    			<img ng-if="photo.thumb != null" src="http://www.liquidanatal.com/app{{photo.thumb}}">
+				    			<img ng-if="photo.thumb == null" src="http://www.liquidanatal.com/app/uploads/{{photo.image}}">
+				    		</div>
+				  		</ion-slide>
+			  	
+					</ion-slide-box>
+			    	
+			  	</div>
+			  	<div class="item">
+			    	<p>{{produto.Product.description}}</p>
+			    	<div class="button button-small button-block button-assertive">
+					  De {{produto.Product.previous_price | currency:"R$"}}
+					</div>
+					<div class="button button-block button-positive">
+					  Por {{produto.Product.current_price | currency:"R$"}}
+					</div>
+
+			  	</div>
+		  	</div>
+
+		</div>
+		<div class="row" ng-show="loading == true">
+		  	<div class="col col-33 col-offset-33">
+		  		<div class="col col-33 col-offset-33">
+		  			<div class="col col-33 col-offset-33">
+		  				<img src="img/loading.GIF" alt="">
+		  			</div>
+		  		</div>
+		  	</div>
+		</div>
+		
+		<ion-list ng-show="!product.length && !loading">
+      		<ion-item>
+       		 Não existem produtos cadastrados
+      		</ion-item>
+    	</ion-list>
+
+  	</ion-content>
+</ion-view>
