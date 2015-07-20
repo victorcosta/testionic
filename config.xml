@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.testionic694602" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.maxmeio.liquidanatal" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Liquida Natal</name>
     <description>
         Aplicativo do Liquida Natal.
@@ -7,22 +7,21 @@
     <author email="atendimento@maxmeio.com" href="http://maxmeio.com">
         Victor Costa
     </author>
-    <content src="index.html"/>
-    <access origin="*"/>
-    <preference name="webviewbounce" value="false"/>
-    <preference name="UIWebViewBounce" value="false"/>
-    <preference name="DisallowOverscroll" value="true"/>
-    <preference name="android-minSdkVersion" value="16"/>
-    <preference name="BackupWebStorage" value="none"/>
-    <preference name="SplashScreen" value="screen"/>
-    <preference name="SplashScreenDelay" value="3000"/>
-    <feature name="StatusBar">
-        <param name="ios-package" value="CDVStatusBar" onload="true"/>
-    </feature>
+    <preference name="permissions" value="none" />
+    <preference name="phonegap-version" value="3.7.0" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" />
+    <preference name="fullscreen" value="false" />
+    <preference name="SplashScreenDelay" value="3000"/>
+
+    <plugin name="InAppBrowser" value="CDVInAppBrowser" />
+    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+    <plugin name="Notification" value="org.apache.cordova.Notification"/>
+    <gap:plugin name="org.apache.cordova.vibration" version="0.3.7" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.device" version="0.2.8" />
+
 
     <icon src="icon.png" />
 
@@ -52,9 +51,11 @@
     <gap:splash gap:platform="ios" src="res/screen/ios/iphone-5.png" width="640" height="1136"/>
     <gap:splash gap:platform="ios" src="res/screen/ios/iphone-6.png" width="750" height="1334"/>
     <gap:splash gap:platform="ios" src="res/screen/ios/iphone-6-plus.png" width="1242" height="2208"/>
-
+    
 
     <gap:splash gap:platform="ios" src="res/screen/ios/ipad-retina.png" width="768" height="1024"/>
     <gap:splash gap:platform="ios" src="res/screen/ios/ipad.png" width="1536" height="2048"/>
- 
+
+
+    <access origin="*" />
 </widget>
