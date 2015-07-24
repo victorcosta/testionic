@@ -6,14 +6,15 @@
 		   			<h3>{{product.Store.name}}</h3>
 			  		<h2>{{product.Product.name}}</h2>
 		   			<h4>{{product.Category.name}}</h4>
-					
 
-					<ul rn-carousel id="sliderzaum" rn-carousel-index="carouselIndex2" rn-carousel-auto-slide rn-carousel-pause-on-hover rn-carousel-buffered class="carousel2">
-                        <li ng-repeat="photo in product.Photo track by photo.id" ng-class="'id-' + photo.id">
-                            <div class="layer"><img ng-src="http://www.liquidanatal.com/app{{photo.thumb}}"></div>
-                        </li>
-                    </ul>
-                    
+			  		<ion-slide-box on-slide-changed="slideHasChanged($index)">
+				  		<ion-slide ng-repeat="photo in product.Photo">
+				    		<div class="box">
+				    			<img ng-src="http://www.liquidanatal.com/app{{photo.thumb}}">
+				    		</div>
+				  		</ion-slide>
+			  	
+					</ion-slide-box>
 			    	
 
 		   			<p>{{product.Product.name}}</p>
