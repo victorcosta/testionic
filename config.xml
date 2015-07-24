@@ -29,7 +29,7 @@
 
     <!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version"           value="3.7.0" /> -->      <!-- all: current version of PhoneGap -->
-    <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="orientation"                value="portrait" />       <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
     <preference name="webviewbounce"              value="true" />           <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
@@ -51,6 +51,9 @@
     <gap:plugin name="de.appplant.cordova.plugin.background-mode" version="0.5.0" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
     <gap:plugin name="com.phonegap.plugin.statusbar" version="1.0.1"/>
+    <gap:plugin name="com.ionic.keyboard">
+        <param name="onload" value="true"  />
+    </gap:plugin>
 
     <icon src="icon.png" />
 
@@ -98,7 +101,7 @@
         Otherwise, you can specify specific domains:
     -->
     <content src="index.html" />
-    
+
     <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
     <access origin="*" />
     <!--
