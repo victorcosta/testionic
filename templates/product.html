@@ -1,0 +1,47 @@
+<ion-view view-title="Produto">
+  	<ion-content>
+   		<div class="card grey produto" ng-show="product.Product.id.length && !loading">
+   			<div class="row">
+	   			<div class="col">
+		   			<h3>{{product.Store.name}}</h3>
+			  		<h2>{{product.Product.name}}</h2>
+		   			<h4>{{product.Category.name}}</h4>
+					
+
+					<ul rn-carousel id="sliderzaum" rn-carousel-index="carouselIndex2" rn-carousel-auto-slide rn-carousel-pause-on-hover rn-carousel-buffered class="carousel2">
+                        <li ng-repeat="photo in product.Photo track by photo.id" ng-class="'id-' + photo.id">
+                            <div class="layer"><img ng-src="http://www.liquidanatal.com/app{{photo.thumb}}"></div>
+                        </li>
+                    </ul>
+                    
+			    	
+
+		   			<p>{{product.Product.name}}</p>
+		   			<div class="preco">
+                        <p>DE: <span> {{product.Product.previous_price | currency:"R$"}}</span></p>
+                        <p>POR: <span>{{product.Product.current_price | currency:"R$"}}</span></p>
+                        <div class="desconto">
+		                    <p class="ng-binding">-{{product.Product.discount}}<span>%</span></p>
+		                </div>
+                    </div>
+	   			</div>
+   			</div>
+		</div>
+
+		
+
+
+		<div class="row" ng-show="loading == true">
+		  	<p class="loading">
+	          <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+	        </p>
+		</div>
+		
+		<ion-list ng-show="!product.Product.id.length && !loading">
+      		<ion-item>
+       		 Não existem produtos cadastrados
+      		</ion-item>
+    	</ion-list>
+
+  	</ion-content>
+</ion-view>

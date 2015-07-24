@@ -3,3 +3,171 @@ body{
 	float: left;
 	width: 100%;
 }
+.loading{
+	text-align: center; 
+	display:block; 
+	width:100%; 
+	padding-top: 20px;
+	color: #ef473a;
+	height: 100%;
+	vertical-align: center;
+}
+.loading .spinner svg {
+  width: 48px;
+  height: 48px;
+}
+
+.bar.bar-assertive{
+	background-color: #ef473a !important;	
+}
+#topo-liquida .button.button-assertive {
+  background-color: #ef473a !important;
+}
+#logo{
+	background:url('../img/topo.png') center top no-repeat;
+	width: 100%;
+	height: 225px;
+}
+.product-list a p{
+	color:#2e7e85;
+	margin-bottom: 7px;
+}
+.product-list a h2{
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+.product-list a{
+	min-height: 110px !important;
+}
+.desconto p {
+  	color: #fff !important;
+  	font-size: 11px;
+  	width: 30px;
+  	height: 30px;
+  	padding-top: 5px;
+  	text-align: center;
+  	border-radius: 50%;
+  	background-color: #5fb5bb;
+  	position: absolute;
+  	top:70px;
+  	left: 70px;
+}
+.desconto p > span{
+	font-size: 9px;
+}
+.grey{
+	background-color:#f5f5f5 !important; 
+	padding: 0;
+}
+.address h3{
+	color: #21767c;
+	font-size: 14px;
+	font-weight: normal;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	white-space:normal;
+}
+.address h2{
+	font-size: 18px;
+	font-weight: bold;
+	white-space:normal;
+}
+.address p{
+	white-space:normal;
+}
+.produto h2{
+	font-size: 18px;
+	font-weight: bold;
+	white-space:normal;	
+	margin-bottom: 5px;
+	margin-top: 0;
+}
+.produto h3{
+	color: #21767c;
+	font-size: 16px;
+	white-space:normal;	
+	margin-bottom: 5px;
+}
+.produto h4{
+	color: #21767c;
+	font-size: 14px;
+	margin-top: 0;
+	margin-bottom: 15px;
+	white-space:normal;	
+}
+.produto p{
+	margin-top: 10px;
+}
+.produto .preco{
+    width: 94%;
+    height: 50px;
+    background-image: url("../img/bg-precos.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 5px;
+    margin-left: 3%;
+    position: relative;
+    margin-top: 20px;
+}
+.produto .preco p{
+    float: left;
+    width: 50%;
+    text-align: center;
+    color: #fff;
+}
+.produto .preco p:nth-child(1){
+    font-size: 11px;
+    text-indent: -25px;
+}
+.produto .preco p:nth-child(1) span{
+    font-size: 15px;
+}
+.produto .preco p:nth-child(2){
+    font-size: 13px;
+    text-indent: -15px;
+}
+.produto .preco p:nth-child(2) span{
+    font-size: 17px;
+}
+.produto .preco .desconto p {
+  	color: #fff !important;
+	font-size: 13px;
+	width: 35px;
+	height: 35px;
+	padding-top: 8px;
+	text-align: center;
+	border-radius: 50%;
+	background-color: #5fb5bb;
+	position: absolute;
+	top: -20px;
+	left: -9px;
+	text-indent: 0;
+}
+.produto .preco .desconto p > span{
+	font-size: 9px;
+}
+#sliderzaum{
+	width: 100%;
+	height: 700px;
+}
+.layer img{
+	/*height: 100%;*/
+	width: 100%;
+	/*background-repeat: no-repeat;*/
+}
+@media all and (max-width:768px){
+	#sliderzaum{
+		height: 545px;
+	}
+}
+@media all and (max-width:480px){
+	#sliderzaum{
+		height: 265px;
+	}
+}
+@media all and (max-width:320px){
+	#sliderzaum{
+		height: 220px;
+	}
+
+}

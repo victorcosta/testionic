@@ -1,22 +1,26 @@
 <ion-view view-title="Lojas">
-  	<ion-content>
+  	<ion-content ng-controller="SegmentCtrl">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="nameFilter" autocomplete="off" id="buscar_nome" placeholder="Busca">
+            </label>
+        </div>
     	<ion-list>
-      		<ion-item ng-repeat="store in segment.Store" href="#/app/stores/{{store.id}}">
-       		 {{store.name}}
-      		</ion-item>
+            <ion-item class="item product-list" ng-repeat="store in segment.Store | filter: searchFilter" href="#/app/stores/{{store.id}}">
+               <p>{{segment.Segment.name}}</p>
+               <h2>{{store.name}}</h2> 
+               <p>{{store.address}}</p> 
+            </ion-item>
     	</ion-list>
-    	<div class="row" ng-show="loading == true">
-		  	<div class="col col-33 col-offset-33">
-		  		<div class="col col-33 col-offset-33">
-		  			<div class="col col-33 col-offset-33">
-		  				<img src="img/loading.GIF" alt="">
-		  			</div>
-		  		</div>
-		  	</div>
-		</div>
+	   <div class="row" ng-show="loading == true">
+		  	<p class="loading">
+                <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+            </p>
+	    </div>
 		<ion-list ng-show="!segment.Store.length && !loading">
       		<ion-item>
-       		 Não existem lojas cadastradas nesse segmento
+       		   Não existem lojas cadastradas nesse segmento
       		</ion-item>
     	</ion-list>
   	</ion-content>

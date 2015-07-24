@@ -3,22 +3,18 @@
     	<ion-list>
       		<ion-item ng-repeat="segmento in segments" href="#/app/segments/{{segmento.Segment.id}}">
        		 {{segmento.Segment.name}}
-       		 <span class="badge badge-assertive">{{segmento.Store.length}}</span>
+       		 <!-- <span class="badge badge-assertive">{{segmento.Store.length}}</span> -->
       		</ion-item>
     	</ion-list>
     	<div class="row" ng-show="loading == true">
-		  	<div class="col col-33 col-offset-33">
-		  		<div class="col col-33 col-offset-33">
-		  			<div class="col col-33 col-offset-33">
-		  				<img src="img/loading.GIF" alt="">
-		  			</div>
-		  		</div>
-		  	</div>
-		</div>
-		<ion-list ng-show="!segments.length && !loading">
-      		<ion-item>
-       		 Não existem segmentos cadastrados
-      		</ion-item>
-    	</ion-list>
-  	</ion-content>
+        <p class="loading">
+          <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+        </p>          
+		  </div>
+  		<ion-list ng-show="!segments.length && !loading">
+        		<ion-item>
+         		 Não existem segmentos cadastrados
+        		</ion-item>
+      	</ion-list>
+    	</ion-content>
 </ion-view>

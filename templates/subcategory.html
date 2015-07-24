@@ -1,0 +1,19 @@
+<ion-view view-title="Subcategorias">
+    <ion-content>
+      <ion-list>
+          <ion-item ng-repeat="category in subcategories" href="#/app/productcategory/{{category.Category.id}}">
+           {{category.Category.name}}
+          </ion-item>
+      </ion-list>
+      <div class="row" ng-show="loading == true">
+        <p class="loading">
+          <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+        </p>          
+      </div>
+      <ion-list ng-show="!subcategories.length && !loading">
+            <ion-item>
+             Não existem categorieas cadastrados
+            </ion-item>
+        </ion-list>
+      </ion-content>
+</ion-view>

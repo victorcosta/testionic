@@ -1,0 +1,33 @@
+<ion-view view-title="">
+  	<ion-content>
+        <div id="topo-liquida">
+            <div id="logo"></div>
+            <div class="button-bar" id="botoes">
+                <a class="button button-assertive" href="#/app/stores"  >LOJAS</a>
+                <a class="button button-assertive" href="#/app/segments">SEGMENTO</a>
+                <a class="button button-assertive" href="#/app/category">PRODUTOS</a>
+            </div>
+        </div>
+    	<ion-list id="lista-index">
+      		<a class="item product-list item-thumbnail-left" ng-repeat="produto in product" href="#/app/product/{{produto.Product.id}}">
+       		    <img ng-src="http://www.liquidanatal.com/app{{produto.Photo[0].thumb}}">
+                <div class="desconto">
+                    <p class="ng-binding">-{{produto.Product.discount}}<span>%</span></p>
+                </div>
+                <p>{{produto.Store.name}}</p>
+                <h2>{{produto.Product.name}}</h2> 
+                <p>{{produto.Category.name}}</p> 
+      		</a>
+    	</ion-list>
+    	<div class="row" ng-show="loading == true">
+		  	<p class="loading">
+                <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+            </p>
+		</div>
+		<ion-list ng-show="!product.length && !loading">
+      		<ion-item>
+       		 Não existem polos cadastrados
+      		</ion-item>
+    	</ion-list>
+  	</ion-content>
+</ion-view>

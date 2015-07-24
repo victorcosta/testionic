@@ -1,0 +1,35 @@
+<ion-view view-title="Produtos">
+  	<ion-content ng-controller="ProductcategoryCtrl">
+        <div class="list list-inset" ng-show="categories.Product.length && !loading">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="nameFilter" autocomplete="off" id="buscar_nome" placeholder="Busca">
+            </label>
+        </div>
+
+        <ion-list ng-show="!store.Store.length && !loading">
+            <ion-item class="item product-list item-thumbnail-left" ng-repeat="produto in categories.Product | filter: searchFilter" href="#/app/product/{{produto.id}}">
+                <img ng-src="http://www.liquidanatal.com/app{{produto.Photo[0].thumb}}">
+                <div class="desconto">
+                    <p class="ng-binding">-{{produto.discount}}<span>%</span></p>
+                </div>
+                <p>{{produto.Store.name}}</p>
+                <h2>{{produto.name}}</h2> 
+                <p>{{categories.Category.name}}</p> 
+            </ion-item>
+        </ion-list>
+
+
+        <div class="row" ng-show="loading == true">
+            <p class="loading">
+                <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+            </p>
+        </div>
+    
+        <ion-list ng-show="!categories.Product.length && !loading">
+            <ion-item>
+                Não existem produtos cadastrados
+            </ion-item>
+        </ion-list>
+  	</ion-content>
+</ion-view>

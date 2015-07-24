@@ -1,18 +1,20 @@
 <ion-view view-title="Lojas">
-  	<ion-content>
-    	<ion-list>
-      		<ion-item ng-repeat="store in stores" href="#/app/stores/{{store.Store.id}}">
+  	<ion-content ng-controller="StoresCtrl">
+      <div class="list list-inset" ng-show="stores.length && !loading">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="nameFilter" autocomplete="off" id="buscar_nome" placeholder="Busca">
+            </label>
+        </div>
+    	<ion-list ng-show="stores.length && !loading">
+      		<ion-item ng-repeat="store in stores | filter: searchFilter" href="#/app/stores/{{store.Store.id}}">
        		 {{store.Store.name}}
       		</ion-item>
     	</ion-list>
     	<div class="row" ng-show="loading == true">
-		  	<div class="col col-33 col-offset-33">
-		  		<div class="col col-33 col-offset-33">
-		  			<div class="col col-33 col-offset-33">
-		  				<img src="img/loading.GIF" alt="">
-		  			</div>
-		  		</div>
-		  	</div>
+		  	<p class="loading">
+          <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+        </p>
 		</div>
 		
 		<ion-list ng-show="!stores.length && !loading">

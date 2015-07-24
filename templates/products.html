@@ -10,8 +10,7 @@
 			  		<ion-slide-box on-slide-changed="slideHasChanged($index)">
 				  		<ion-slide ng-repeat="photo in produto.Photo">
 				    		<div class="box">
-				    			<img ng-if="photo.thumb != null" src="http://www.liquidanatal.com/app{{photo.thumb}}">
-				    			<img ng-if="photo.thumb == null" src="http://www.liquidanatal.com/app/uploads/{{photo.image}}">
+				    			<img ng-src="http://www.liquidanatal.com/app{{photo.thumb}}">
 				    		</div>
 				  		</ion-slide>
 			  	
@@ -31,14 +30,15 @@
 		  	</div>
 
 		</div>
+
+
+
+
+		
 		<div class="row" ng-show="loading == true">
-		  	<div class="col col-33 col-offset-33">
-		  		<div class="col col-33 col-offset-33">
-		  			<div class="col col-33 col-offset-33">
-		  				<img src="img/loading.GIF" alt="">
-		  			</div>
-		  		</div>
-		  	</div>
+		  	<p class="loading">
+	          <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+	        </p>
 		</div>
 		
 		<ion-list ng-show="!product.length && !loading">

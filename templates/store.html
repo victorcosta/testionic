@@ -1,42 +1,54 @@
 <ion-view view-title="Loja">
-  	<ion-content>
-   		<div class="list card">
-
-   			<div class="card">
-			  	<div class="item item-text-wrap">
-			  		<h2>{{store.Store.name}}</h2>
-			    	<p>{{store.Store.address}} <br>{{store.Store.phones}} </p>
+  	<ion-content ng-controller="StoreCtrl">
+   		<div class="card" ng-show="!store.Store.length && !loading">
+	  		<div class="item grey">
+	  			<div class="row">
+				  	<div class="col address col-50">
+				  		<h2>{{store.Store.name}}</h2>
+				  		<h3>{{store.Segment.name}}</h3>
+				  		<p>{{store.Store.address}}</p>
+				  	</div>
+				  	<div class="col col-50">
+				  		<iframe width="100%" height="168" frameborder="0" style="border:0" src="{{url | trustAsResourceUrl}}" allowfullscreen></iframe>
+				  	</div>
 			  	</div>
+		  	</div>
+		  	<div class="item tabs tabs-secondary tabs-icon-left  grey">
+			    <a class="tab-item" href="tel:{{store.Store.phones}}">
+			      	<i class="icon ion-ios-telephone"></i>
+			      	Ligar
+			    </a>
+			    <a class="tab-item" href="mailto:{{store.User.email}}">
+		      		<i class="icon ion-email"></i>
+		      		Email
+			    </a>
 			</div>
-			
-			<div class="item" ng-repeat="produto in store.Product">
-			  	<div class="item">
-			    	<h2>{{produto.name}}</h2>
-			  	</div>
-			  	<div class="item item-image">
-			    	<img src="http://www.liquidanatal.com/app/uploads/{{produto.Photo[0].image}}">
-			  	</div>
-			  	<div class="item">
-			    	<p>{{produto.description}}</p>
-			    	<div class="button button-small button-block button-assertive">
-					  De {{produto.previous_price | currency:"R$"}}
-					</div>
-					<div class="button button-block button-positive">
-					  Por {{produto.current_price | currency:"R$"}}
-					</div>
-
-			  	</div>
-		  	</div>
-
 		</div>
+
+		<div class="list list-inset" ng-show="!store.Store.length && !loading">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" ng-model="nameFilter" autocomplete="off" id="buscar_nome" placeholder="Busca">
+            </label>
+        </div>
+
+    	<ion-list ng-show="!store.Store.length && !loading">
+            <ion-item class="item product-list item-thumbnail-left" ng-repeat="produto in store.Product | filter: searchFilter" href="#/app/product/{{produto.id}}">
+            <img ng-src="http://www.liquidanatal.com/app{{produto.Photo[0].thumb}}">
+              <div class="desconto">
+                    <p class="ng-binding">-{{produto.discount}}<span>%</span></p>
+                </div>
+               <p>{{store.Store.name}}</p>
+               <h2>{{produto.name}}</h2> 
+               <p>{{produto.Category.name}}</p> 
+            </ion-item>
+    	</ion-list>
+
+
 		<div class="row" ng-show="loading == true">
-		  	<div class="col col-33 col-offset-33">
-		  		<div class="col col-33 col-offset-33">
-		  			<div class="col col-33 col-offset-33">
-		  				<img src="img/loading.GIF" alt="">
-		  			</div>
-		  		</div>
-		  	</div>
+		  	<p class="loading">
+	          <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+	        </p>
 		</div>
 		
 		<ion-list ng-show="!store.Product.length && !loading">

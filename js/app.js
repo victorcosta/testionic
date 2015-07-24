@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers','angular-carousel'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -12,8 +12,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
           cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-          cordova.plugins.Keyboard.disableScroll(true);
-
         }
         if (window.StatusBar) {
           // org.apache.cordova.statusbar required
@@ -22,7 +20,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
     });
 })
-
 
 
 
@@ -35,6 +32,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         templateUrl: 'templates/menu.html',
         controller: 'AppCtrl'
     })
+
+    .state('app.index', {
+        url: '/index',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/index.html',
+                controller: 'IndexCtrl'
+            }
+        }
+    })
+
     .state('app.segments', {
         url: '/segments',
         views: {
@@ -53,30 +61,21 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             }
         }
     })
-    .state('app.hubs', {
-        url: '/hubs',
+    .state('app.category', {
+        url: '/category',
         views: {
             'menuContent': {
-                templateUrl: 'templates/hubs.html',
-                controller: 'HubsCtrl'
+                templateUrl: 'templates/category.html',
+                controller: 'CategoryCtrl'
             }
         }
     })
-    .state('app.hub', {
-        url: '/hubs/:hubId',
+    .state('app.subcategory', {
+        url: '/subcategory/:categoryId',
         views: {
             'menuContent': {
-                templateUrl: 'templates/hub.html',
-                controller: 'HubCtrl'
-            }
-        }
-    })
-    .state('app.products', {
-        url: '/products',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/products.html',
-                controller: 'ProductsCtrl'
+                templateUrl: 'templates/subcategory.html',
+                controller: 'SubcategoryCtrl'
             }
         }
     })
@@ -97,7 +96,25 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 controller: 'StoreCtrl'
             }
         }
+    })
+    .state('app.productcategory', {
+        url: '/productcategory/:subcategoryId',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/productcategory.html',
+                controller: 'ProductcategoryCtrl'
+            }
+        }
+    })
+    .state('app.product', {
+        url: '/product/:productId',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/product.html',
+                controller: 'ProductCtrl'
+            }
+        }
     });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/stores');
+    $urlRouterProvider.otherwise('/app/index');
 });
