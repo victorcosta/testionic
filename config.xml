@@ -63,6 +63,8 @@
 
     <gap:splash gap:platform="ios" src="res/screen/ios/ipad-retina.png" width="768" height="1024"/>
     <gap:splash gap:platform="ios" src="res/screen/ios/ipad.png" width="1536" height="2048"/>
+    
+    <content src="index.html"/>
 
     <access origin="*" />
 </widget>
