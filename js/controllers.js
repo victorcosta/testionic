@@ -152,7 +152,8 @@ angular.module('starter.controllers',  [])
     };
 }])
 
-.controller('ProductCtrl',  function($scope, $sce, $http, $stateParams, $ionicSlideBoxDelegate) {
+.controller('ProductCtrl',  function($scope, $sce, $http, $stateParams, $ionicSlideBoxDelegate, $ionicViewService) {
+    $scope.showback = false;
     $scope.loading = true;
     $http({method: 'JSONP', url: "http://www.liquidanatal.com/app/products/"+$stateParams.productId+".json?callback=JSON_CALLBACK", responseType: "json"})
     .success(function(data, status) {
@@ -164,6 +165,10 @@ angular.module('starter.controllers',  [])
     .error(function(data, status) {
         console.log(data || "Request failed");
     }); 
+    var history = $ionicViewService.getBackView();
+    if (history.stateName != 'app.single') {
+        $scope.showback = true;
+    };
 })
 
 .filter('trustAsResourceUrl', ['$sce', function($sce) {

@@ -23,7 +23,7 @@
                         <div class="desconto">
 		                    <p class="ng-binding">-{{product.Product.discount}}<span>%</span></p>
 		                </div>
-                    </div>
+                    </div>                    
 	   			</div>
    			</div>
 		</div>
@@ -44,4 +44,7 @@
     	</ion-list>
 
   	</ion-content>
+  	<div class="bar bar-footer bar-light" ng-show="product.Product.id.length && !loading && showback">
+		<a href="#/app/stores/{{product.Store.id}}" ng-style="{ 'width': '100%' }" class="button icon-left button-full ion-chevron-left button-assertive">Ir para loja</a>
+	</div>
 </ion-view>
