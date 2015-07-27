@@ -3,6 +3,13 @@ body{
 	float: left;
 	width: 100%;
 }
+.slider { 
+	height: 100%; 
+	text-align: center 
+}
+.scroll { 
+	height: 100% 
+}
 .loading{
 	text-align: center; 
 	display:block; 

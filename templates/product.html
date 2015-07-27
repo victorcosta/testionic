@@ -10,7 +10,7 @@
 			  		<ion-slide-box auto-play="true" does-continue="true" delegate-handle="image-viewer" on-slide-changed="slideHasChanged($index)">
 				  		<ion-slide ng-repeat="photo in product.Photo">
 				    		<div class="box">
-				    			<img ng-src="http://www.liquidanatal.com/app{{photo.thumb}}">
+				    			<img ng-src="http://www.liquidanatal.com/app{{photo.thumb}}" ng-style="{ 'width': '100%' }">
 				    		</div>
 				  		</ion-slide>
 					</ion-slide-box>

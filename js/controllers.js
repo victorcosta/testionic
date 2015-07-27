@@ -158,7 +158,8 @@ angular.module('starter.controllers',  [])
     .success(function(data, status) {
         $scope.loading = false;
         $scope.product = data.object;
-        $ionicSlideBoxDelegate.update();
+        // $ionicSlideBoxDelegate.$getByHandle('image-viewer').slide(5000);
+        $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
     })
     .error(function(data, status) {
         console.log(data || "Request failed");
