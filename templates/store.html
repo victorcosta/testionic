@@ -1,5 +1,5 @@
 <ion-view view-title="Loja">
-  	<ion-content ng-controller="StoreCtrl">
+  	<ion-content ng-controller="StoreCtrl" lazy-scroll>
    		<div class="card" ng-show="!store.Store.length && !loading">
 	  		<div class="item grey">
 	  			<div class="row">
@@ -34,13 +34,13 @@
 
     	<ion-list ng-show="!store.Store.length && !loading">
             <ion-item class="item product-list item-thumbnail-left" ng-repeat="produto in store.Product | filter: searchFilter" href="#/app/product/{{produto.id}}">
-            <img ng-src="http://www.liquidanatal.com/app{{produto.Photo[0].thumb}}">
-              <div class="desconto">
+            	<img image-lazy-src="http://www.liquidanatal.com/app{{produto.Photo[0].thumb}}" image-lazy-loader="android" image-lazy-distance-from-bottom-to-load="-50">
+          		<div class="desconto">
                     <p class="ng-binding">-{{produto.discount}}<span>%</span></p>
                 </div>
-               <p>{{store.Store.name}}</p>
-               <h2>{{produto.name}}</h2> 
-               <p>{{produto.Category.name}}</p> 
+               	<p>{{store.Store.name}}</p>
+               	<h2>{{produto.name}}</h2> 
+               	<p>{{produto.Category.name}}</p> 
             </ion-item>
     	</ion-list>
 

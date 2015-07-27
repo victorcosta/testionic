@@ -9,7 +9,7 @@
 
         <ion-list ng-show="!store.Store.length && !loading">
             <ion-item class="item product-list item-thumbnail-left" ng-repeat="produto in categories.Product | filter: searchFilter" href="#/app/product/{{produto.id}}">
-                <img ng-src="http://www.liquidanatal.com/app{{produto.Photo[0].thumb}}">
+                <img image-lazy-src="http://www.liquidanatal.com/app{{produto.Photo[0].thumb}}" image-lazy-loader="android" image-lazy-distance-from-bottom-to-load="-50">
                 <div class="desconto">
                     <p class="ng-binding">-{{produto.discount}}<span>%</span></p>
                 </div>

@@ -1,5 +1,5 @@
 <ion-view view-title="">
-  	<ion-content>
+  	<ion-content lazy-scroll>
         <div id="topo-liquida">
             <div id="logo"></div>
             <div class="button-bar" id="botoes">
@@ -10,7 +10,7 @@
         </div>
     	<ion-list id="lista-index">
       		<a class="item product-list item-thumbnail-left" ng-repeat="produto in product" href="#/app/product/{{produto.Product.id}}">
-       		    <img ng-src="http://www.liquidanatal.com/app{{produto.Photo[0].thumb}}">
+       		    <img image-lazy-src="http://www.liquidanatal.com/app{{produto.Photo[0].thumb}}" image-lazy-loader="android" image-lazy-distance-from-bottom-to-load="-50">
                 <div class="desconto">
                     <p class="ng-binding">-{{produto.Product.discount}}<span>%</span></p>
                 </div>
