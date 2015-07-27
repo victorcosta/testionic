@@ -154,6 +154,10 @@ angular.module('starter.controllers',  [])
 
 .controller('ProductCtrl',  function($scope, $sce, $http, $stateParams, $ionicSlideBoxDelegate) {
     $scope.loading = true;
+    ionic.Platform.ready(function() {
+        // hide the status bar using the StatusBar plugin
+        StatusBar.hide();
+    });
     $http({method: 'JSONP', url: "http://www.liquidanatal.com/app/products/"+$stateParams.productId+".json?callback=JSON_CALLBACK", responseType: "json"})
     .success(function(data, status) {
         $scope.loading = false;
