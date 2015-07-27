@@ -7,7 +7,7 @@
 			  		<h2>{{product.Product.name}}</h2>
 		   			<h4>{{product.Category.name}}</h4>
 
-			  		<ion-slide-box on-slide-changed="slideHasChanged($index)">
+			  		<ion-slide-box auto-play="true" does-continue="true" delegate-handle="image-viewer" on-slide-changed="slideHasChanged($index)">
 				  		<ion-slide ng-repeat="photo in product.Photo">
 				    		<div class="box">
 				    			<img ng-src="http://www.liquidanatal.com/app{{photo.thumb}}">
