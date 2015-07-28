@@ -49,22 +49,20 @@ function onNotificationGCM(e) {
       // $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
       // Your GCM push server needs to know the regID before it can push to this device
       // here is where you might want to send it the regID for later use.
-      // console.log("regID = " + e.regid);
-      xmlhttp.open("GET","http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+result+'&os=1",true);
-      xmlhttp.send();
-      // $.ajax({
-      //   url:'http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+e.regid+'&os=1',
-      //   type:'GET',
-      //   dataType:'json',
-      //   error:function(jqXHR,text_status,strError){
-      //     // alert("no connection");
-      //   },
-      //   timeout:60000,
-      //   success:function(data){
-      //     // alert("Save");
-      //     // $("#app-status-ul").append('<li>response :' + data.success + "</li>");
-      //   }
-      // });
+      console.log("regID = " + e.regid);
+      $.ajax({
+        url:'http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+e.regid+'&os=1',
+        type:'GET',
+        dataType:'json',
+        error:function(jqXHR,text_status,strError){
+          // alert("no connection");
+        },
+        timeout:60000,
+        success:function(data){
+          // alert("Save");
+          // $("#app-status-ul").append('<li>response :' + data.success + "</li>");
+        }
+      });
     }
     break;
     case 'message':
@@ -84,21 +82,19 @@ function onNotificationGCM(e) {
 }
 function tokenHandler (result) {
   // alert(result);
-  xmlhttp.open("GET","http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+result+'&os=2",true);
-  xmlhttp.send();
-  // $.ajax({
-  //       url:'http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+result+'&os=2',
-  //       type:'GET',
-  //       dataType:'json',
-  //       error:function(jqXHR,text_status,strError){
-  //           console.log("no connection APN");
-  //       },
-  //       timeout:6000,
-  //       success:function(data){
-  //           // $("#logo").append('<li>response :' + data.success + "</li>");
-  //           // alert(data.success);
-  //       }
-  //   });
+  $.ajax({
+        url:'http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+result+'&os=2',
+        type:'GET',
+        dataType:'json',
+        error:function(jqXHR,text_status,strError){
+            console.log("no connection APN");
+        },
+        timeout:6000,
+        success:function(data){
+            // $("#logo").append('<li>response :' + data.success + "</li>");
+            // alert(data.success);
+        }
+    });
   // $("#app-status-ul").append('<li>token: '+ result +'</li>');
   // Your iOS push server needs to know the token before it can push to this device
   // here is where you might want to send it the token for later use.
