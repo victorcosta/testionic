@@ -1,5 +1,6 @@
 function onDeviceReady() {
   var pushNotification;
+  alert(device.platform);
   /*Notificações*/
   try {
     pushNotification = window.plugins.pushNotification;
@@ -41,6 +42,7 @@ function onNotificationGCM(e) {
   switch( e.event ){
     case 'registered':
     if ( e.regid.length > 0 ){
+      $("#topo-liquida").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
       // $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
       // Your GCM push server needs to know the regID before it can push to this device
       // here is where you might want to send it the regID for later use.
@@ -86,7 +88,7 @@ function tokenHandler (result) {
         },
         timeout:6000,
         success:function(data){
-            $("#app-status-ul").append('<li>response :' + data.success + "</li>");
+            $("#topo-liquida").append('<li>response :' + data.success + "</li>");
         }
     });
   // $("#app-status-ul").append('<li>token: '+ result +'</li>');
