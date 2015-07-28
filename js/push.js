@@ -106,3 +106,4 @@ function errorHandler (error) {
   alert(error);
   // $("#logo").append('<li>error:'+ error +'</li>');
 }
+document.addEventListener('deviceready', onDeviceReady, true);
