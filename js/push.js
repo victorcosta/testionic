@@ -5,7 +5,6 @@ function onDeviceReady() {
   try {
     pushNotification = window.plugins.pushNotification;
     if (device.platform == 'android' || device.platform == 'Android') {
-      alert('droid');
       pushNotification.register(successHandler, errorHandler, {"senderID":"44644380243","ecb":"onNotificationGCM"});   // required!
     } else {
       pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});  // required!
@@ -103,7 +102,7 @@ function tokenHandler (result) {
 function successHandler (result) {
   console.log(result);
   // $("#logo").append('<li>success:'+ result +'</li>');
-  // alert(result);
+  alert(result);
 }
 function errorHandler (error) {
   alert(error);
