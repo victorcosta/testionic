@@ -27,7 +27,7 @@ function onDeviceReady() {
 function onNotificationAPN(e){
     if (e.alert){
         // $("#logo").append('<li>push-notification: ' + e.alert + '</li>');
-        navigator.notification.alert(e.alert);
+        // navigator.notification.alert(e.alert);
     }
     if (e.sound){
         var snd = new Media(e.sound);
@@ -43,7 +43,7 @@ function onNotificationGCM(e) {
     case 'registered':
     if ( e.regid.length > 0 ){
       // $("#logo").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
-      alert(e.regid);
+      // alert(e.regid);
       // $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
       // Your GCM push server needs to know the regID before it can push to this device
       // here is where you might want to send it the regID for later use.
@@ -90,7 +90,7 @@ function tokenHandler (result) {
         timeout:6000,
         success:function(data){
             // $("#logo").append('<li>response :' + data.success + "</li>");
-            alert(data.success);
+            // alert(data.success);
         }
     });
   // $("#app-status-ul").append('<li>token: '+ result +'</li>');
@@ -100,10 +100,10 @@ function tokenHandler (result) {
 function successHandler (result) {
   console.log(result);
   // $("#logo").append('<li>success:'+ result +'</li>');
-  alert(result);
+  // alert(result);
 }
 function errorHandler (error) {
-  alert(error);
+  // alert(error);
   // $("#logo").append('<li>error:'+ error +'</li>');
 }
 document.addEventListener('deviceready', onDeviceReady, true);
