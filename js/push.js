@@ -1,111 +1,103 @@
-/*
- * angular-phonegap-push-notification v0.0.3
- * (c) 2014 Patrick Heneise, patrickheneise.com
- * License: MIT
- */
+function onDeviceReady() {
+  var pushNotification;
+  /*Notificações*/
+  try {
+    pushNotification = window.plugins.pushNotification;
+    if (device.platform == 'android' || device.platform == 'Android') {
+      pushNotification.register(successHandler, errorHandler, {"senderID":"44644380243","ecb":"onNotificationGCM"});   // required!
+    } else {
+      pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});  // required!
+    }
+  }catch(err) {
+    txt="There was an error on this page.\n\n";
+    txt+="Error description: " + err.message + "\n\n";
+    //alert(txt);
+  }
+  // try{
+  //  if(device.){
 
-'use strict';
+  //  }
+  // }
 
-angular.module('cordova', [])
+  /*Fim Notificações*/
 
-  .factory('cordovaReady', function ($rootScope, $q, $timeout) {
-    var loadingDeferred = $q.defer();
-    
-    document.addEventListener('deviceready', function () {
-      $timeout(function() {
-        $rootScope.$apply(loadingDeferred.resolve);
+}
+// handle APNS notifications for iOS
+function onNotificationAPN(e){
+    if (e.alert){
+        // $("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
+        // navigator.notification.alert(e.alert);
+    }
+    if (e.sound){
+        var snd = new Media(e.sound);
+        snd.play();
+    }
+    if (e.badge) {
+        pushNotification.setApplicationIconBadgeNumber(successHandler, e.badge);
+    }
+}
+// handle GCM notifications for Android
+function onNotificationGCM(e) {
+  switch( e.event ){
+    case 'registered':
+    if ( e.regid.length > 0 ){
+      // $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+      // Your GCM push server needs to know the regID before it can push to this device
+      // here is where you might want to send it the regID for later use.
+      console.log("regID = " + e.regid);
+      $.ajax({
+        url:'http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+e.regid+'os=1',
+        type:'GET',
+        dataType:'json',
+        error:function(jqXHR,text_status,strError){
+          // alert("no connection");
+        },
+        timeout:60000,
+        success:function(data){
+          // alert("Save");
+          // $("#app-status-ul").append('<li>response :' + data.success + "</li>");
+        }
       });
-    });
-    
-    return function cordovaReady() {
-      return loadingDeferred.promise;
-    };
-  })
-
-  .service('phone', function () {
-    this.isAndroid = function () {
-      var uagent = navigator.userAgent.toLowerCase();
-      return uagent.search('android') > -1 ? true : false;
-    };
-  })
-
-  .factory('push', function ($rootScope, phone, cordovaReady) {
-    return {
-      registerPush: function (fn) {
-        cordovaReady().then(function () {
-          var
-            pushNotification = window.plugins.pushNotification,
-            successHandler = function (result) {},
-            errorHandler = function (error) {},
-            tokenHandler = function (result) {
-              return fn({
-                'type': 'registration',
-                'id': result,
-                'device': 'ios'
-              });
-            };
-
-          app.onNotificationAPN = function (event) {
-            if (event.alert) {
-              navigator.notification.alert(event.alert);
-            }
-
-            if (event.sound) {
-              var snd = new Media(event.sound);
-              snd.play();
-            }
-
-            if (event.badge) {
-              pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
-            }
-          };
-
-          app.onNotificationGCM = function (event) {
-            switch (event.event) {
-              case 'registered':
-                if (event.regid.length > 0) {
-                  return fn({
-                    'type': 'registration',
-                    'id': event.regid,
-                    'device': 'android'
-                  });
-                }
-                break;
-
-              case 'message':
-                if (event.foreground) {
-                  var my_media = new Media("/android_asset/www/" + event.soundname);
-                  my_media.play();
-                } else {
-                  if (event.coldstart) {
-                  } else {
-                  }
-                }
-                break;
-
-              case 'error':
-                break;
-
-              default:
-                break;
-            }
-          };
-
-          if (phone.isAndroid()) {
-            pushNotification.register(successHandler, errorHandler, {
-              'senderID': '{your_sender_id}',
-              'ecb': 'app.onNotificationGCM'
-            });
-          } else {
-            console.log('register ios');
-            pushNotification.register(tokenHandler, errorHandler, {
-              'badge': 'true',
-              'sound': 'true',
-              'alert': 'true',
-              'ecb': 'app.onNotificationAPN'
-            });
-          }
-        });
+    }
+    break;
+    case 'message':
+      // if this flag is set, this notification happened while we were in the foreground.
+      // you might want to play a sound to get the user's attention, throw up a dialog, etc.
+      if (e.foreground){
+        // if the notification contains a soundname, play it.
+        var my_media = new Media("/android_asset/www/"+e.soundname);
+        my_media.play();
       }
-    };
-  });
+      break;
+    case 'error':
+      break;
+    default:
+      break;
+  }
+}
+function tokenHandler (result) {
+  // alert(result);
+  $.ajax({
+        url:'http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+result+'&os=2',
+        type:'GET',
+        dataType:'json',
+        error:function(jqXHR,text_status,strError){
+            console.log("no connection APN");
+        },
+        timeout:6000,
+        success:function(data){
+            $("#app-status-ul").append('<li>response :' + data.success + "</li>");
+        }
+    });
+  // $("#app-status-ul").append('<li>token: '+ result +'</li>');
+  // Your iOS push server needs to know the token before it can push to this device
+  // here is where you might want to send it the token for later use.
+}
+function successHandler (result) {
+  console.log(result);
+  // $("#app-status-ul").append('<li>success:'+ result +'</li>');
+}
+function errorHandler (error) {
+  // alert(error);
+  // $("#app-status-ul").append('<li>error:'+ error +'</li>');
+}
