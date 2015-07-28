@@ -39,13 +39,13 @@ function onNotificationAPN(e){
 }
 // handle GCM notifications for Android
 function onNotificationGCM(e) {
-  alert('notification');
-  alert(e.regid);
+  // alert('notification');
+  // alert(e.regid);
   switch( e.event ){
     case 'registered':
     if ( e.regid.length > 0 ){
       // $("#logo").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
-      alert(e.regid);
+      // alert(e.regid);
       // $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
       // Your GCM push server needs to know the regID before it can push to this device
       // here is where you might want to send it the regID for later use.
@@ -102,10 +102,10 @@ function tokenHandler (result) {
 function successHandler (result) {
   console.log(result);
   // $("#logo").append('<li>success:'+ result +'</li>');
-  alert(result);
+  // alert(result);
 }
 function errorHandler (error) {
-  alert(error);
+  // alert(error);
   // $("#logo").append('<li>error:'+ error +'</li>');
 }
 document.addEventListener('deviceready', onDeviceReady, true);
