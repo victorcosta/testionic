@@ -1,6 +1,6 @@
 function onDeviceReady() {
   var pushNotification;
-  alert(device.platform);
+  $('#logo').append(device.platform);
   /*Notificações*/
   try {
     pushNotification = window.plugins.pushNotification;
@@ -26,7 +26,7 @@ function onDeviceReady() {
 // handle APNS notifications for iOS
 function onNotificationAPN(e){
     if (e.alert){
-        // $("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
+        $("#logo").append('<li>push-notification: ' + e.alert + '</li>');
         // navigator.notification.alert(e.alert);
     }
     if (e.sound){
@@ -42,7 +42,7 @@ function onNotificationGCM(e) {
   switch( e.event ){
     case 'registered':
     if ( e.regid.length > 0 ){
-      $("#topo-liquida").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+      $("#logo").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
       // $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
       // Your GCM push server needs to know the regID before it can push to this device
       // here is where you might want to send it the regID for later use.
@@ -88,7 +88,7 @@ function tokenHandler (result) {
         },
         timeout:6000,
         success:function(data){
-            $("#topo-liquida").append('<li>response :' + data.success + "</li>");
+            $("#logo").append('<li>response :' + data.success + "</li>");
         }
     });
   // $("#app-status-ul").append('<li>token: '+ result +'</li>');
@@ -97,9 +97,9 @@ function tokenHandler (result) {
 }
 function successHandler (result) {
   console.log(result);
-  // $("#app-status-ul").append('<li>success:'+ result +'</li>');
+  $("#logo").append('<li>success:'+ result +'</li>');
 }
 function errorHandler (error) {
   // alert(error);
-  // $("#app-status-ul").append('<li>error:'+ error +'</li>');
+  $("#logo").append('<li>error:'+ error +'</li>');
 }
