@@ -1,4 +1,5 @@
 function onDeviceReady() {
+  alert('teste');
   var pushNotification;
   // $('#logo').append(device.platform);
   /*Notificações*/
