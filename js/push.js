@@ -1,11 +1,11 @@
 function onDeviceReady() {
-  alert('teste');
   var pushNotification;
   // $('#logo').append(device.platform);
   /*Notificações*/
   try {
     pushNotification = window.plugins.pushNotification;
     if (device.platform == 'android' || device.platform == 'Android') {
+      alert('droid');
       pushNotification.register(successHandler, errorHandler, {"senderID":"44644380243","ecb":"onNotificationGCM"});   // required!
     } else {
       pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});  // required!
@@ -40,6 +40,8 @@ function onNotificationAPN(e){
 }
 // handle GCM notifications for Android
 function onNotificationGCM(e) {
+  alert('notification');
+  alert(e.regid);
   switch( e.event ){
     case 'registered':
     if ( e.regid.length > 0 ){
@@ -104,7 +106,7 @@ function successHandler (result) {
   // alert(result);
 }
 function errorHandler (error) {
-  // alert(error);
+  alert(error);
   // $("#logo").append('<li>error:'+ error +'</li>');
 }
 document.addEventListener('deviceready', onDeviceReady, true);
