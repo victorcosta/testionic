@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ionicLazyLoad'])
+angular.module('starter', ['ionic', 'starter.controllers','ionicLazyLoad','uiGmapgoogle-maps'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -24,7 +24,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ionicLazyLoad'])
 
 
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, uiGmapGoogleMapApiProvider) {
+
     $stateProvider
 
     .state('app', {
@@ -107,6 +108,34 @@ angular.module('starter', ['ionic', 'starter.controllers','ionicLazyLoad'])
             }
         }
     })
+    .state('app.locations', {
+        url: '/locations',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/locations.html',
+                controller: 'LocationsCtrl'
+            }
+        }
+    })
+    .state('app.productlocation', {
+        url: '/productlocation/:locationId',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/productlocation.html',
+                controller: 'ProductlocationCtrl'
+            }
+        }
+    })
+
+    .state('app.map', {
+        url: '/map',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/map.html',
+                controller: 'MapCtrl'
+            }
+        }
+    })
     .state('app.product', {
         url: '/product/:productId',
         views: {
@@ -120,4 +149,11 @@ angular.module('starter', ['ionic', 'starter.controllers','ionicLazyLoad'])
     $urlRouterProvider.otherwise('/app/index');
 
     $ionicConfigProvider.backButton.text('');
+
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyAeG007ZXIKzOpnuGrNS5QRdmyDKnmD2NA',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization,places'
+    });
+
 });
