@@ -205,116 +205,77 @@ angular.module('starter.controllers',  [])
 
 .controller('MapCtrl', ['$scope', '$filter', '$http','$location', '$state', function ($scope, $filter, $http, $location, $state) {
     $scope.loading = true;
-    $scope.loading = false;
-
-
-
-
-
-
-
-
-
-    $scope.map = {center: {latitude: -5.7999189, longitude: -35.2222448 }, zoom: 12 };
-    $scope.options = {scrollwheel: true};
-    $scope.markers = [];
-    
-    var lat  = -5.7999189;
-    var long = -35.2222448;
-    
-    //just want to create this loop to make more markers
-    for(var i=0; i<3; i++) {
-        $scope.markers.push({
-            id: $scope.markers.length,
-            latitude: lat + (i * 0.030),
-            longitude: long + (i * 0.044),
-            title: 'm' + i
-        })
-    }
-
-   
-
-
-
-
-
-
-
-
-
-
-
     
 
-    // var createMarker = function(i, objStores, idKey) {
+    var createMarker = function(i, objStores, idKey) {
 
-    //     if (idKey == null) {
-    //         idKey = "id";
-    //     }
+        if (idKey == null) {
+            idKey = "id";
+        }
 
-    //     var latitude = objStores[i].Store.latitude;
-    //     var longitude = objStores[i].Store.longitude;
-    //     var ret = {
-    //         latitude:   latitude,
-    //         longitude:  longitude,
-    //         title:      objStores[i].Store.name,
-    //         address:    objStores[i].Store.address,
-    //         storeId:    objStores[i].Store.id,
-    //         icon:       'http://www.liquidanatal.com/site/img/pin.png',
-    //         // options:    {title:objStores[i].Store.name,content:objStores[i].Store.name,}
-    //     };
+        var latitude = objStores[i].Store.latitude;
+        var longitude = objStores[i].Store.longitude;
+        var ret = {
+            latitude:   latitude,
+            longitude:  longitude,
+            title:      objStores[i].Store.name,
+            address:    objStores[i].Store.address,
+            storeId:    objStores[i].Store.id,
+            icon:       'http://www.liquidanatal.com/site/img/pin.png',
+            // options:    {title:objStores[i].Store.name,content:objStores[i].Store.name,}
+        };
 
-    //     ret.onClick = function(e) {
-    //         // $scope.modaltitle   = e.model.title;
-    //         // $scope.modaladdress = e.model.address;            
-    //         // $scope.modalstoreid = e.model.storeId;            
-    //         // $('#modalpin').openModal();
-    //         // console.log(e);
-    //         // $state.go('/stores/'+e.model.storeId);
-    //         $state.go('app.single', {storeId: e.model.storeId});
+        ret.onClick = function(e) {
+            // $scope.modaltitle   = e.model.title;
+            // $scope.modaladdress = e.model.address;            
+            // $scope.modalstoreid = e.model.storeId;            
+            // $('#modalpin').openModal();
+            // console.log(e);
+            // $state.go('/stores/'+e.model.storeId);
+            $state.go('app.single', {storeId: e.model.storeId});
 
-    //     };
-    //     ret[idKey] = i;
-    //     return ret;
-    // };
+        };
+        ret[idKey] = i;
+        return ret;
+    };
     
 
-    // //Mapa    
-    // $http({method: 'JSONP', url: "http://www.liquidanatal.com/app/stores.json?callback=JSON_CALLBACK", responseType: "json"})
-    //     .success(function (result) {
-    //         $scope.loading = false;
-    //         $scope.stores = result.object;
+    //Mapa    
+    $http({method: 'JSONP', url: "http://www.liquidanatal.com/app/stores.json?callback=JSON_CALLBACK", responseType: "json"})
+        .success(function (result) {
+            $scope.loading = false;
+            $scope.stores = result.object;
 
-    //         $scope.markers = [];
+            $scope.markers = [];
 
-    //         $scope.map = {
-    //             center: {
-    //                 latitude: -5.7999189,
-    //                 longitude: -35.2222448
-    //             },
-    //             zoom: 12,
-    //             bounds: {}
-    //         };
+            $scope.map = {
+                center: {
+                    latitude: -5.7999189,
+                    longitude: -35.2222448
+                },
+                zoom: 12,
+                bounds: {}
+            };
                   
 
 
-    //         $scope.$watch(function() {
-    //             return $scope.map.bounds;
-    //         }, function(nv, ov) {
-    //             if (!ov.southwest && nv.southwest) {
-    //                 var markers = [];
-    //                 for (var i = 0; i < result.object.length; i++) {
-    //                     markers.push(createMarker(i, result.object))
-    //                 }
-    //                 $scope.markers = markers;
-    //             }
-    //         }, true);
+            $scope.$watch(function() {
+                return $scope.map.bounds;
+            }, function(nv, ov) {
+                if (!ov.southwest && nv.southwest) {
+                    var markers = [];
+                    for (var i = 0; i < result.object.length; i++) {
+                        markers.push(createMarker(i, result.object))
+                    }
+                    $scope.markers = markers;
+                }
+            }, true);
 
 
-    //     })
-    //     .error(function (data, status) {
-    //         console.log(data);
-    //     });
+        })
+        .error(function (data, status) {
+            console.log(data);
+        });
 
 
 }])
