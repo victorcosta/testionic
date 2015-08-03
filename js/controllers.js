@@ -269,10 +269,8 @@ angular.module('starter.controllers',  [])
                     }
                     $scope.markers = markers;
                 }
-                    console.log($scope.markers.length);
             }, true);
 
-            console.log($scope.map);
 
         })
         .error(function (data, status) {
