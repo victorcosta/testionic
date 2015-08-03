@@ -1,0 +1,19 @@
+<ion-view view-title="Mapa">
+  <ion-content>
+    <section id="map" ng-show="!loading">
+      <div class="container" >
+        <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+            <ui-gmap-markers models="markers" options="options" click="onClick" coords="'self'" icon="'icon'"></ui-gmap-markers>
+
+        </ui-gmap-google-map>
+      </div>
+    </section>
+
+
+    <div class="row" ng-show="loading == true">
+      <p class="loading">
+        <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+      </p>          
+    </div>
+  </ion-content>
+</ion-view>

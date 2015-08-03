@@ -156,6 +156,15 @@ body{
 .produto .preco .desconto p > span{
 	font-size: 9px;
 }
+#map, .container{
+	height: 100%;
+	width: 100%;
+	float: left;
+}
+.angular-google-map-container, .angular-google-map{
+    height: 100%;
+    width: 100%;
+}
 #footer{
     width: 100%;
     position: absolute;

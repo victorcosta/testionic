@@ -40,7 +40,7 @@ function onNotificationAPN(e){
 // handle GCM notifications for Android
 function onNotificationGCM(e) {
   // alert('notification');
-  // alert(e.regid);
+  console.log(result);
   switch( e.event ){
     case 'registered':
     if ( e.regid.length > 0 ){
@@ -81,7 +81,7 @@ function onNotificationGCM(e) {
   }
 }
 function tokenHandler (result) {
-  // alert(result);
+  console.log(result);
   $.ajax({
         url:'http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+result+'&os=2',
         type:'GET',
