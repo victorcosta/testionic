@@ -1,0 +1,19 @@
+<ion-view view-title="Polos">
+  	<ion-content>
+    	<ion-list>
+      		<ion-item ng-repeat="hub in hubs" href="#/app/productlocation/{{hub.Hub.id}}">
+       		 {{hub.Hub.name}}
+      		</ion-item>
+    	</ion-list>
+    	<div class="row" ng-show="loading == true">
+        <p class="loading">
+          <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+        </p>          
+		  </div>
+  		<ion-list ng-show="!hubs.length && !loading">
+        		<ion-item>
+         		 Não existem polos comerciais cadastrados
+        		</ion-item>
+      	</ion-list>
+    	</ion-content>
+</ion-view>

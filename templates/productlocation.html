@@ -1,0 +1,20 @@
+<ion-view view-title="{{hubs.Hub.name}}">
+
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="store in hubs.Store" href="#/app/stores/{{store.id}}">
+             {{store.name}}
+            </ion-item>
+        </ion-list>
+        <div class="row" ng-show="loading == true">
+        <p class="loading">
+          <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
+        </p>          
+          </div>
+        <ion-list ng-show="!hubs.Store.length && !loading">
+                <ion-item>
+                 Não existem polos comerciais cadastrados
+                </ion-item>
+        </ion-list>
+        </ion-content>
+</ion-view>
