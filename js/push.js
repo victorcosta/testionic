@@ -59,7 +59,7 @@ function onNotificationGCM(e) {
         },
         timeout:60000,
         success:function(data){
-          // alert("Save");
+          alert("Save");
           // $("#app-status-ul").append('<li>response :' + data.success + "</li>");
         }
       });
