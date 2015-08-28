@@ -23,14 +23,18 @@
                         <div class="desconto">
 		                    <p class="ng-binding">-{{product.Product.discount}}<span>%</span></p>
 		                </div>
-                    </div>                    
+                    </div>
 	   			</div>
+                <!-- <div class="bar bar-footer bar-light"  ng-show="product.Product.id.length && !loading && showback"> -->
    			</div>
 		</div>
-
-		
-
-
+		<div class="row" ng-show="product.Product.id.length && !loading && showback">
+			<div class="col">
+   				<div style="position:relative" style="bar bar-footer bar-light">
+					<a href="#/app/stores/{{product.Store.id}}" id="footer" class="button icon-left button-full ion-chevron-left button-assertive">Ir para loja</a>
+				</div>
+			</div>
+		</div>
 		<div class="row" ng-show="loading == true">
 		  	<p class="loading">
 	          <ion-spinner class="spinner-assertive" icon="spiral"></ion-spinner>
@@ -42,9 +46,6 @@
        		 Não existem produtos cadastrados
       		</ion-item>
     	</ion-list>
-
+	
   	</ion-content>
-  	<div class="bar bar-footer bar-light"  ng-show="product.Product.id.length && !loading && showback">
-		<a href="#/app/stores/{{product.Store.id}}" id="footer" class="button icon-left button-full ion-chevron-left button-assertive">Ir para loja</a>
-	</div>
 </ion-view>

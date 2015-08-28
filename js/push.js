@@ -2,7 +2,7 @@ function onDeviceReady() {
   var pushNotification;
   // $('#logo').append(device.platform);
   /*Notificações*/
-  console.log('Ready!');
+  // console.log('Ready!');
   try {
     pushNotification = window.plugins.pushNotification;
     if (device.platform == 'android' || device.platform == 'Android') {
@@ -41,7 +41,7 @@ window.onNotificationAPN = function(e){
 // handle GCM notifications for Android
 window.onNotificationGCM = function(e) {
   // alert('notification');
-  console.log('here');
+  // console.log('here');
   switch( e.event ){
     case 'registered':
     if ( e.regid.length > 0 ){
@@ -50,7 +50,7 @@ window.onNotificationGCM = function(e) {
       // $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
       // Your GCM push server needs to know the regID before it can push to this device
       // here is where you might want to send it the regID for later use.
-      console.log("regID = " + e.regid);
+      // console.log("regID = " + e.regid);
       $.ajax({
         url:'http://maxmeio.mine.nu/cnt/liquidanatal/2015/servidorpush/add.php?key='+e.regid+'&os=1',
         type:'GET',
@@ -60,7 +60,7 @@ window.onNotificationGCM = function(e) {
         },
         timeout:60000,
         success:function(data){
-          console.log(data);
+          // console.log(data);
           // $("#app-status-ul").append('<li>response :' + data.success + "</li>");
         }
       });
@@ -101,7 +101,7 @@ function tokenHandler (result) {
   // here is where you might want to send it the token for later use.
 }
 function successHandler (result) {
-  console.log(result);
+  // console.log(result);
   // $("#logo").append('<li>success:'+ result +'</li>');
   // alert(result);
 }
