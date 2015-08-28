@@ -25,7 +25,7 @@ function onDeviceReady() {
 
 }
 // handle APNS notifications for iOS
-function onNotificationAPN(e){
+window.onNotificationAPN = function(e){
     if (e.alert){
         // $("#logo").append('<li>push-notification: ' + e.alert + '</li>');
         // navigator.notification.alert(e.alert);
@@ -39,9 +39,9 @@ function onNotificationAPN(e){
     }
 }
 // handle GCM notifications for Android
-function onNotificationGCM(e) {
+window.onNotificationGCM = function(e) {
   // alert('notification');
-  console.log(result);
+  console.log('here');
   switch( e.event ){
     case 'registered':
     if ( e.regid.length > 0 ){
