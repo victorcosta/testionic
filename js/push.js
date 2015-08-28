@@ -2,6 +2,7 @@ function onDeviceReady() {
   var pushNotification;
   // $('#logo').append(device.platform);
   /*Notificações*/
+  console.log('Ready!');
   try {
     pushNotification = window.plugins.pushNotification;
     if (device.platform == 'android' || device.platform == 'Android') {
@@ -59,7 +60,7 @@ function onNotificationGCM(e) {
         },
         timeout:60000,
         success:function(data){
-          alert("Save");
+          console.log(data);
           // $("#app-status-ul").append('<li>response :' + data.success + "</li>");
         }
       });
