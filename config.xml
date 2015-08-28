@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<widget id="com.maxmeio.liquidaionic" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.maxmeio.liquidaionic" version="0.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 <!-- <widget id="com.maxmeio.liquidanatal" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0"> -->
    <name>Liquida Natal</name>
 
     <description>
-        Aplicativo teste do Liquida Natal.
+        Aplicativo Oficial do Liquida Natal.
     </description>
     <author email="atendimento@maxmeio.com" href="http://maxmeio.com">
         Victor Costa
